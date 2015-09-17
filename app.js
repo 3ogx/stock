@@ -7,8 +7,13 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var stock = require('./routes/stock');
 
 var app = express();
+var cradle = require("cradle");
+var settings = require('./settings');
+var db = new(cradle.Connection)().database('spider');
+var util = require('util');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/stock', stock);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +62,20 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// app.helpers({
+// 	inspect: function(obj) {
+// 		return util.inspect(obj, true);
+// 	}
+// });
+// app.dynamicHelpers({
+// 	headers: function(req, res) {
+// 		return req.headers;
+// 	}
+// });
+// app.get('/helper', function(req, res) {
+// 	res.render('helper', {
+// 		title: 'Helpers'
+// 	});
+// });
 
 module.exports = app;

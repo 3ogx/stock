@@ -1,5 +1,40 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    body(ng-app="stock" layout="row" ng-controller="StockController as ul")
+
+        md-sidenav(class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')")
+
+            md-toolbar.md-whiteframe-z1
+                h1 Website
+
+
+            md-list
+                md-list-item(ng-repeat="it in ul.sites")
+                    md-button(ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }")
+                        md-icon(md-svg-icon="{{it.logo }}" class="avatar")
+                        {{it.name }}
+
+
+        div(flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2")
+
+            md-toolbar(layout="row" class="md-whiteframe-z1")
+                md-button("menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List")
+                    md-icon(md-svg-icon="menu") 
+                h1 Stock News Spider - App
+
+            md-content(flex id="content")
+                // md-icon(md-svg-icon="{{ul.selected.avatar }}" class="avatar")
+                p(ng-repeat="item in ul.users")
+                    a(href="{{item.value.url}}") {{ item.value.title }}
+
+                md-button.contact(md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User")
+                    md-tooltipContact {{ ul.selected.Name }}
+                    md-icon(md-svg-icon="share")
+
+
+
+        ul(ng-repeat="data in datas")
+            li {{ data }}

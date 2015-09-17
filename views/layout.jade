@@ -2,6 +2,29 @@ doctype html
 html
   head
     title= title
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="")
+    meta(name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" )
+
+    link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic')
+    link(rel="stylesheet" href="/bower_components/angular-material/angular-material.css")
+    link(rel="stylesheet" href="/assets/app.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+
+    script(src="/bower_components/angular/angular.js")
+    script(src="/bower_components/angular-animate/angular-animate.js")
+    script(src="/bower_components/angular-aria/angular-aria.js")
+    script(type="text/javascript" src="/bower_components/angular-material/angular-material.js")
+
+    // script(src="/src/users/Users.js")
+    // script(src="/src/users/UserController.js")
+    // script(src="/src/users/UserService.js")
+
+    script(src="/src/stock/init.js")
+    script(src="/src/stock/Stock.js")
+    script(src="/src/stock/StockController.js")
+    script(src="/src/stock/StockService.js")
+
     block content
